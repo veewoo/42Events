@@ -106,10 +106,13 @@ export function Header() {
             <Divider />
             <HStack pl={4} py={4}>
               <Text>Language: </Text>
-              <Select w="auto" border="none" placeholder="Select option">
-                <option value="English" selected>
-                  English
-                </option>
+              <Select
+                w="auto"
+                border="none"
+                defaultValue="English"
+                placeholder="Select option"
+              >
+                <option value="English">English</option>
                 <option value="简体中文">简体中文</option>
                 <option value="繁體中文">繁體中文</option>
                 <option value="Bahasa Indonesia">Bahasa Indonesia</option>

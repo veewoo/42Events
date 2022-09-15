@@ -10,22 +10,22 @@ import {
   Tag,
   TagLabel,
   TagLeftIcon,
+  StackProps,
 } from "@chakra-ui/react";
 import { Event } from "src/types/event";
 import { BiCycling, BiRun, BiWalk } from "react-icons/bi";
 import { SPOT_TYPE } from "src/utils/constants";
 import { IconType } from "react-icons";
 
-type Props = Pick<
-  Event,
-  "sportType" | "raceRunners" | "racePrice" | "race_type"
->;
+type Props = StackProps &
+  Pick<Event, "sportType" | "raceRunners" | "racePrice" | "race_type">;
 
 export function EventTagList({
   sportType,
   raceRunners,
   racePrice,
   race_type,
+  ...stackProps
 }: Props) {
   const tags: { icon?: IconType; title: string }[] = [
     {
@@ -44,7 +44,7 @@ export function EventTagList({
   ];
 
   return (
-    <HStack spacing={4}>
+    <HStack spacing={4} {...stackProps}>
       {tags
         .filter((item) => item.title)
         .map(({ title, icon }, index) => (

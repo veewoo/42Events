@@ -23,7 +23,6 @@ export function Event() {
   });
 
   const [skipCount, setSkipCount] = useState(0);
-  // const [spotType, setSpotType] = useState("");
 
   useEffect(() => {
     const _skipCount = param.get("skipCount");
@@ -36,10 +35,12 @@ export function Event() {
 
   return (
     <Container maxWidth={"container.md"}>
+      <Heading my={4}>Events</Heading>
+      <Divider />
       {isLoading && <LoadingModal />}
       {!isLoading && !data && <Heading>Data not found!</Heading>}
       {data && (
-        <VStack spacing={4}>
+        <VStack spacing={4} py={6}>
           {data.events.map((item, index) => (
             <EventCard
               key={"event-" + index}

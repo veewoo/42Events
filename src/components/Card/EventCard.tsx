@@ -33,7 +33,12 @@ export function EventCard({
           {race_name}
         </Heading>
         <Text fontSize="small">{racePeriod}</Text>
-        <EventTagList {...eventProps} />
+        <EventTagList
+          race_type={eventProps.race_type}
+          sportType={eventProps.sportType}
+          racePrice={eventProps.racePrice}
+          raceRunners={eventProps.raceRunners}
+        />
       </VStack>
     </Stack>
   );
