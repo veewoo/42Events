@@ -1,10 +1,4 @@
-import {
-  Heading,
-  HStack,
-  Image,
-  Link as ChakraLink,
-  VStack,
-} from "@chakra-ui/react";
+import { Heading, Image, VStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 type Props = {

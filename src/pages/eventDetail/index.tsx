@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Image, VStack } from "@chakra-ui/react";
+import { Box, Container, Heading, Image } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import LoadingModal from "src/components/LoadingModal";

@@ -1,12 +1,5 @@
 import {
-  Box,
-  Heading,
   HStack,
-  Image,
-  Link as ChakraLink,
-  Stack,
-  VStack,
-  Text,
   Tag,
   TagLabel,
   TagLeftIcon,

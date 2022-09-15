@@ -1,9 +1,7 @@
 import {
-  CircularProgress,
   Container,
   Divider,
   Heading,
-  Skeleton,
   useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";

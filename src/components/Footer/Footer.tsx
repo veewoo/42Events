@@ -1,29 +1,14 @@
 import {
   Box,
-  Button,
   Container,
-  Divider,
-  Heading,
   HStack,
   List,
   ListItem,
-  Select,
-  useDisclosure,
   Text,
-  Slide,
   Link as ChakraLink,
   Link,
 } from "@chakra-ui/react";
-import { useRef } from "react";
-import {
-  BiBell,
-  BiLogIn,
-  BiMailSend,
-  BiPencil,
-  BiQuestionMark,
-} from "react-icons/bi";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { GoThreeBars } from "react-icons/go";
 
 export function Footer() {
   return (

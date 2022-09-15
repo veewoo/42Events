@@ -2,20 +2,18 @@ import {
   Box,
   Divider,
   Heading,
-  Image,
   useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { useEvent } from "src/contexts/RaceEventContext";
-import { Link } from "react-router-dom";
-
-import "swiper/css";
-import "swiper/css/navigation";
 import { TRaceEvent } from "src/types/event";
 import { EventCard } from "src/components/Card/EventCard";
 import NavigationButton from "../Carousel/NavigationButton";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 const events: {
   title: string;
@@ -24,7 +22,7 @@ const events: {
   { title: "Most Popular 🔥", key: "popular" },
   { title: "Featured 🌟", key: "featured" },
   { title: "New Release 🎉", key: "newRelease" },
-  { title: "Free 🆓", key: "free" },
+  { title: "Free", key: "free" },
   { title: "Past Events ⛳️", key: "past" },
   { title: "Starting Soon", key: "startingSoon" },
 ];
