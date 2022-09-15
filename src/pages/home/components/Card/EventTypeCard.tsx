@@ -1,4 +1,10 @@
-import { HStack, Image, Link as ChakraLink, VStack } from "@chakra-ui/react";
+import {
+  Heading,
+  HStack,
+  Image,
+  Link as ChakraLink,
+  VStack,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -9,13 +15,28 @@ type Props = {
 
 export function EventTypeCard({ imageSource, redirectUrl, title }: Props) {
   return (
-    <VStack>
-      <Link to={redirectUrl} style={{ width: "50%" }}>
-        <Image src={imageSource} />
-      </Link>
-      <ChakraLink href={redirectUrl} fontSize="2xl">
-        {title}
-      </ChakraLink>
-    </VStack>
+    <Link to={redirectUrl}>
+      <VStack
+        role="group"
+        border="2px"
+        borderColor="teal"
+        borderRadius={8}
+        py="16"
+        _hover={{
+          bg: "teal",
+        }}
+      >
+        <Image src={imageSource} style={{ width: "50%" }} />
+        <Heading
+          fontSize="2xl"
+          color="teal"
+          _groupHover={{
+            color: "white",
+          }}
+        >
+          {title}
+        </Heading>
+      </VStack>
+    </Link>
   );
 }

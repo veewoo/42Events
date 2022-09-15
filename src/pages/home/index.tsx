@@ -1,8 +1,10 @@
-import { Container, Divider, Skeleton } from "@chakra-ui/react";
+import { Container, Skeleton } from "@chakra-ui/react";
 import { RaceEventProvider, useEvent } from "src/contexts/RaceEventContext";
 import { EventList } from "./components/CardList/EventList";
 import { EventTypeList } from "./components/CardList/EventTypeList";
 import Carousel from "./components/Carousel";
+
+import "./swiper-custom.css";
 
 export function Home() {
   const { isLoading } = useEvent();
@@ -11,7 +13,7 @@ export function Home() {
     <RaceEventProvider>
       <Container maxWidth="container.md">
         {isLoading ? <Skeleton height="400px" /> : <Carousel />}
-        <EventTypeList my={8} />
+        <EventTypeList my={24} />
         <EventList />
       </Container>
     </RaceEventProvider>

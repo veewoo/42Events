@@ -15,17 +15,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { TRaceEvent } from "src/types/event";
 import { EventCard } from "src/components/Card/EventCard";
+import NavigationButton from "../Carousel/NavigationButton";
 
 const events: {
   title: string;
   key: keyof TRaceEvent;
 }[] = [
   { title: "Most Popular 🔥", key: "popular" },
-  { title: "featured", key: "featured" },
+  { title: "Featured 🌟", key: "featured" },
   { title: "New Release 🎉", key: "newRelease" },
-  { title: "free", key: "free" },
+  { title: "Free 🆓", key: "free" },
   { title: "Past Events ⛳️", key: "past" },
-  { title: "startingSoon", key: "startingSoon" },
+  { title: "Starting Soon", key: "startingSoon" },
 ];
 
 export function EventList() {
@@ -40,15 +41,18 @@ export function EventList() {
   return (
     <>
       {events.map(({ key, title }) => (
-        <Box key={key}>
-          <VStack mb={8}>
+        <Box key={key} mb="24" position="relative">
+          <VStack mb={8} alignItems="flex-start">
             <Heading as="h2" textAlign="center" mb={2}>
               {title}
             </Heading>
-            <Divider w={"25%"} borderWidth={2} />
+            <Divider w={"20%"} borderWidth={2} borderColor="teal" />
           </VStack>
           <Swiper
-            navigation={true}
+            navigation={{
+              prevEl: `#btn-prev-${key}`,
+              nextEl: `#btn-next-${key}`,
+            }}
             slidesPerView={slidesPerView}
             spaceBetween={24}
             modules={[Navigation]}
@@ -59,6 +63,8 @@ export function EventList() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <NavigationButton id={`btn-prev-${key}`} direction="left" />
+          <NavigationButton id={`btn-next-${key}`} direction="right" />
         </Box>
       ))}
     </>
