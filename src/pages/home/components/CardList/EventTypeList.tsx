@@ -38,6 +38,7 @@ export function EventTypeList(props: SimpleGridProps) {
     >
       {eventTypes.map(({ type, ...eventTypeProp }, index) => (
         <EventTypeCard
+          key={`event-type-${index}`}
           {...eventTypeProp}
           redirectUrl={`/events?spotType=${type}`}
         />
