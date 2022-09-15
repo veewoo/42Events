@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { Event } from "./pages/event";
 import { EventDetail } from "./pages/eventDetail";
 import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ export const App = () => (
           <Route path="/events/:id" element={<EventDetail />} />
         </Routes>
       </Box>
+      <Footer />
     </QueryClientProvider>
   </ChakraProvider>
 );
