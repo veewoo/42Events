@@ -1,4 +1,11 @@
-import { Box, Divider, Heading, Image, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Heading,
+  Image,
+  useBreakpointValue,
+  VStack,
+} from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { useEvent } from "src/contexts/RaceEventContext";
@@ -23,6 +30,10 @@ const events: {
 
 export function EventList() {
   const { data } = useEvent();
+  const slidesPerView = useBreakpointValue({
+    base: 1,
+    md: 2,
+  });
 
   if (!data) return null;
 
@@ -38,7 +49,7 @@ export function EventList() {
           </VStack>
           <Swiper
             navigation={true}
-            slidesPerView={2}
+            slidesPerView={slidesPerView}
             spaceBetween={24}
             modules={[Navigation]}
           >

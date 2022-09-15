@@ -19,6 +19,7 @@ import { IconType } from "react-icons";
 
 type Props = {
   isVertical?: boolean;
+  width?: string;
 } & Event;
 
 export function EventCard({
@@ -31,6 +32,7 @@ export function EventCard({
   raceRunners,
   racePrice,
   race_type,
+  width,
 }: Props) {
   const link = `/events/${_id}`;
   const tags: { icon?: IconType; title: string }[] = [
@@ -50,29 +52,36 @@ export function EventCard({
   ];
 
   return (
-    <Stack direction={isVertical ? "column" : "row"}>
+    <Stack direction={isVertical ? "column" : "row"} width={width}>
       <Link to={link}>
-        <Image w="full" h="48" objectFit="cover" src={banner_card} />
+        <Image
+          w={isVertical ? "full" : "80"}
+          h="48"
+          objectFit="cover"
+          src={banner_card}
+        />
       </Link>
-      <Heading as="h4" fontSize="md">
-        {race_name}
-      </Heading>
-      <Text fontSize="small">{racePeriod}</Text>
-      <HStack spacing={4}>
-        {tags
-          .filter((item) => item.title)
-          .map(({ title, icon }, index) => (
-            <Tag
-              key={"tag-" + index}
-              size={"md"}
-              variant="subtle"
-              colorScheme="cyan"
-            >
-              {icon && <TagLeftIcon boxSize="12px" as={icon} />}
-              <TagLabel>{title}</TagLabel>
-            </Tag>
-          ))}
-      </HStack>
+      <VStack alignItems="flex-start">
+        <Heading as="h4" fontSize="md">
+          {race_name}
+        </Heading>
+        <Text fontSize="small">{racePeriod}</Text>
+        <HStack spacing={4}>
+          {tags
+            .filter((item) => item.title)
+            .map(({ title, icon }, index) => (
+              <Tag
+                key={"tag-" + index}
+                size={"md"}
+                variant="subtle"
+                colorScheme="cyan"
+              >
+                {icon && <TagLeftIcon boxSize="12px" as={icon} />}
+                <TagLabel>{title}</TagLabel>
+              </Tag>
+            ))}
+        </HStack>
+      </VStack>
     </Stack>
   );
 }

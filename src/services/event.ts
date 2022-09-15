@@ -1,10 +1,6 @@
 import axios from "axios";
-import { TRaceEvent } from "src/types/event";
+import { TRaceEvent, Event } from "src/types/event";
 
-interface RaceEvent {
-  code: number;
-  data: Data;
-}
 
 interface Data {
   featured: Featured[];
@@ -193,12 +189,12 @@ interface Featured {
   participants: number;
 }
 
+const BASE_URL = "https://api-v2-sg-staging.42race.com";
+
 export const eventServices = {
   fetch: async (): Promise<TRaceEvent> => {
     try {
-      const { data } = await axios.get(
-        "https://api-v2-sg-staging.42race.com/api/v1/race-events"
-      );
+      const { data } = await axios.get(`${BASE_URL}/api/v1/race-events`);
 
       console.log(data);
 
@@ -209,6 +205,27 @@ export const eventServices = {
         free: data.data.free,
         past: data.data.past,
         startingSoon: data.data.startingSoon,
+      };
+    } catch (error) {
+      throw error;
+    }
+  },
+  fetchByType: async (
+    skipCount: number,
+    spotType: string
+  ): Promise<{ events: Event[]; total: number }> => {
+    try {
+      const { data } = await axios.get(
+        `${BASE_URL}/api/v1/race-filters?skipCount=${skipCount}&limit=10${
+          spotType ? `&spotType=${spotType}` : ""
+        }`
+      );
+
+      console.log(data);
+
+      return {
+        events: data.data,
+        total: data.totalData,
       };
     } catch (error) {
       throw error;
