@@ -1,5 +1,4 @@
 import { SimpleGrid, SimpleGridProps } from "@chakra-ui/react";
-import { useEvent } from "src/contexts/RaceEventContext";
 import { EventTypeCard } from "../Card/EventTypeCard";
 
 const EVENT_TYPE = {

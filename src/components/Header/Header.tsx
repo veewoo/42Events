@@ -3,24 +3,13 @@ import {
   Button,
   Container,
   Divider,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  Flex,
   Heading,
   HStack,
-  Input,
   List,
   ListItem,
   Select,
   useDisclosure,
-  VStack,
   Text,
-  Collapse,
   Slide,
   Link as ChakraLink,
 } from "@chakra-ui/react";
@@ -118,9 +107,15 @@ export function Header() {
             <HStack pl={4} py={4}>
               <Text>Language: </Text>
               <Select w="auto" border="none" placeholder="Select option">
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                <option value="English" selected>
+                  English
+                </option>
+                <option value="简体中文">简体中文</option>
+                <option value="繁體中文">繁體中文</option>
+                <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                <option value="ภาษาไทย">ภาษาไทย</option>
+                <option value="Tiếng Việt">Tiếng Việt</option>
+                <option value="日本">日本</option>
               </Select>
             </HStack>
           </Container>

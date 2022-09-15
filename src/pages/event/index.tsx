@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { EventCard } from "src/components/Card/EventCard";
+import LoadingModal from "src/components/LoadingModal";
 import { eventServices } from "src/services/event";
 import Pagination from "./components/Pagination";
 
@@ -35,19 +36,7 @@ export function Event() {
 
   return (
     <Container maxWidth={"container.md"}>
-      {isLoading && (
-        <VStack
-          position="fixed"
-          top={0}
-          left={0}
-          w="100vw"
-          h="100vh"
-          bg="white"
-          justifyContent="center"
-        >
-          <CircularProgress isIndeterminate color="green.300" />
-        </VStack>
-      )}
+      {isLoading && <LoadingModal />}
       {!isLoading && !data && <Heading>Data not found!</Heading>}
       {data && (
         <VStack spacing={4}>
