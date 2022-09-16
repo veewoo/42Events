@@ -13,6 +13,8 @@ import LoadingModal from "src/components/LoadingModal";
 import { eventServices } from "src/services/event";
 import Pagination from "./components/Pagination";
 
+const ITEM_PER_PAGE = 10;
+
 export function Event() {
   const [param] = useSearchParams();
   const isVertical = useBreakpointValue({
@@ -20,15 +22,10 @@ export function Event() {
     md: false,
   });
 
-  const [skipCount, setSkipCount] = useState(0);
+  const [pageIndex, setPageIndex] = useState(0);
 
-  useEffect(() => {
-    const _skipCount = param.get("skipCount");
-    setSkipCount(_skipCount ? Number(_skipCount) : 0);
-  }, [param]);
-
-  const { data, isLoading } = useQuery(["fetchEventsByType", skipCount], () =>
-    eventServices.fetchByType(skipCount, param.get("spotType") ?? "")
+  const { data, isLoading } = useQuery(["fetchEventsByType", pageIndex], () =>
+    eventServices.fetchByType(pageIndex * 10, param.get("spotType") ?? "")
   );
 
   return (
@@ -49,9 +46,10 @@ export function Event() {
           ))}
           <Pagination
             total={data.total}
-            currentIndex={skipCount}
+            limit={ITEM_PER_PAGE}
+            currentIndex={pageIndex}
             onPageChange={(nextIndex) => {
-              setSkipCount(nextIndex);
+              setPageIndex(nextIndex);
             }}
           />
         </VStack>
