@@ -15,24 +15,24 @@ export default function Pagination({
   onPageChange,
 }: Props) {
   const totalPage = useMemo(() => Math.ceil(total / limit), [total, limit]);
-  const [visiblePages, setVisiblePages] = useState<number[]>([]);
+  const [visiblePages, setVisiblePages] = useState<number[]>(
+    new Array(totalPage).fill(true).map((_, i) => i)
+  );
 
   useEffect(() => {
-    const arr = [];
-    let i = 0;
-    let length = totalPage;
+    if (totalPage > 3) {
+      const arr = [];
 
-    if (length > 3) {
-      i = Math.max(currentIndex - 1, 0);
-      length = Math.min(currentIndex + 1, totalPage);
+      let i = Math.max(currentIndex - 1, 0);
+      let length = Math.min(currentIndex + 2, totalPage);
+
+      while (i < length) {
+        arr.push(i);
+        i++;
+      }
+
+      setVisiblePages(arr);
     }
-
-    while (i < length) {
-      arr.push(i);
-      i++;
-    }
-
-    setVisiblePages(arr);
   }, [totalPage, currentIndex]);
 
   const goToPage = (index: number) => {
@@ -40,8 +40,6 @@ export default function Pagination({
   };
 
   const handleClick = (index: number) => {
-    console.log(currentIndex, index);
-
     if (currentIndex !== index) {
       goToPage(index);
     }
